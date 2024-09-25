@@ -13,4 +13,4 @@ Order in which the scripts are executed:
 
 Note: **matlabHelperFunctions** is a folder containing helper functions for *MRIeyeShape.m* 
 
-*To be further populated following conclusion of peer review*
+*To be further populated...
