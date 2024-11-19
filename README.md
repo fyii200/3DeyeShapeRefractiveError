@@ -45,7 +45,7 @@ derived central retinal arteriolar/venular equivalent, vessel tortuosity and ves
 
 ## Step 5. Statistical analysis
 <pre>
-statisticalAnalysis.R : R script for performing the regression analysis described in the manuscript.
+statisticalAnalysis.R : R script for performing the regression analysis described in the paper.
 </pre>
 
 
