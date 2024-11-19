@@ -1,14 +1,12 @@
+# Author : Fabian Yii                          
+# Email  : fabian.yii@ed.ac.uk
+
 # install.packages("lmerTest")
 library(lmerTest)
 library(sjPlot)
 library(car)
 library(ggplot2)
-
-## Clear workspace
 rm(list=ls())
-
-## Set working directory to parent directory
-setwd("/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/")
 
 ## Read the cleaned tabular data in long format (eyes with adequate quality fundas images)
 SERdata                 <- read.csv("data/UKB/cleaned_data_long_MRI_cohort_nonRejectFundusQuality.csv")
@@ -181,7 +179,7 @@ ggplot(d) + geom_point(aes(x=asphericityHor, y=vertexCurvHor, fill="Horizontal")
   scale_fill_discrete(name="Meridian") +
   labs(x="Asohericity", y="Posterior pole curvature") +
   myTheme + theme(legend.position="top", axis.text =element_text(size=10))
-ggsave("manuscript/figures/suppFigure.pdf", width=8.5, height=6.5)
+ggsave("figures/suppFigure.pdf", width=8.5, height=6.5)
 
 
 
