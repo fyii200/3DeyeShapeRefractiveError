@@ -1,13 +1,12 @@
+# Author : Fabian Yii                          
+# Email  : fabian.yii@ed.ac.uk
+
+rm(list=ls())
 library(dplyr)
 
-## Clear workspace
-rm(list=ls())
-
-## Set working directory to parent directory
-setwd("/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/")
-
 ## Read the cleaned tabular data in long format (14913 eyes; 7470 RE & 7443 LE)
-d  <- read.csv('data/UKB/cleaned_data_long_MRI_all.csv')
+d  <- read.csv("data/UKB/cleaned_data_long_MRI_all.csv")
+
 
 #############################################################################################
 ############################# Quality control & building cohort #############################
@@ -75,28 +74,7 @@ write.csv(d,
 
 
 
-####
-home <- "Desktop/MRI_fundus/MATLABanalysis/"
-d <- read.csv(paste0(home, "results/combined.csv"))
-d <- d[round(d$assessmentLapse,1) <= 1.5, ]
-d_ok <- subset(d, reject=="")
-d_reject <- subset(d, reject=="y")
 
-IDs <- d_ok$id
-IDs <- d_reject$id
-
-for(id in IDs){
-  if( sum(grepl(id, dir(paste0(home, "MRIslices")) )) > 0){
-    print(id)
-  }
-}
-
-imageNames = dir(paste0(home, "MRIslices"))
-results = vector()
-for(i in 1:length(imageNames)){
-  results[i] = substr(imageNames[i], 1, 7)
-  
-}
 
 
 
