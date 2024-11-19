@@ -1,3 +1,8 @@
+## This repository contains code used in the work described in:
+*Can fundus features tell us something about 3D eye shape?* [under review]
+
+An overview of the workflow is provided below.
+
 ## Step 1. Participant selection and image quality control
 <pre>
 clean_raw_data.R          : R script for processing the raw UK Biobank dataframe into a format compatible with 'cohort_builder.R'.
