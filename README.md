@@ -1,7 +1,24 @@
 
 
+### Segmentation of posterior eye volume
 
-https://github.com/user-attachments/assets/9e572ab1-21a0-469e-aa5d-84152e340b2c
+High myopia             |  Low hyperopia
+:---------------------------------------------------------------------------: | :---------------------------------------------------------------------------:
+![extremeMyopiaSideVideo-ezgif com-crop](https://github.com/user-attachments/assets/5f47efbf-0d97-496b-bece-24f218766c77)  |  ![hyperopiaSideVideo-ezgif com-crop](https://github.com/user-attachments/assets/1711eaf7-91e4-4c8a-989f-d31745107370)
+
+
+
+
+### Fitted ellipsoids (green) along with segmentation overlays (pink/red), rotating around the vertical axis
+
+![Supplementary VideoS1](https://github.com/user-attachments/assets/011ea01d-e96a-4313-bba2-099cf4bd0a19)
+
+
+
+
+
+
+
 
 
 
