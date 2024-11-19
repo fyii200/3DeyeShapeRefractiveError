@@ -26,7 +26,7 @@ fundusQualityAssessment.m : MATLAB script for manual quality assessment of fundu
 MRIeyeShape.m         : MATLAB script for fitting ellipsoid and deriving eye shape parameters.
 matlabHelperFunctions : Folder containing helper functions for 'MRIeyeShape.m'. 
 
-Note that relevant helper functions including 'createCirclesMask.m' (mathworks.com/matlabcentral/fileexchange/47905-createcirclesmask-m) & 'imEquivalentEllipsoid.m' (uk.mathworks.com/matlabcentral/fileexchange/34104-image-ellipsoid-3d) were not written by myself and are therefore not included in this repository. However, they can be accessed through the links provided.
+Note that relevant helper functions including 'createCirclesMask.m' (mathworks.com/matlabcentral/fileexchange/47905-createcirclesmask-m), 'imEquivalentEllipsoid.m' (uk.mathworks.com/matlabcentral/fileexchange/34104-image-ellipsoid-3d) & 'getkey' (mathworks.com/matlabcentral/fileexchange/7465-getkey) were not written by myself and are therefore not included in this repository. However, they can be accessed through the links provided.
 </pre>
 
 &nbsp;&nbsp;&nbsp; *PS: ellipsoids in green; segmentation overlays in pink/red*
