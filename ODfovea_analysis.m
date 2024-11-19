@@ -36,7 +36,7 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
 
     % Get laterality (right or left eye) corresponding to this image from the dataset 
     this_data = data(strcmp(data.fundus_V1, mask_name),:);
-    eye = this_data.eye;
+    eye       = this_data.eye;
     
     % save image name to the result cell array.
     result{i+1, 1} = mask_name; 
@@ -63,8 +63,8 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         end
         
         % Extract fovea results
-        fovStats = stats(fovIndex);
-        fovCentroid = [fovStats.Centroid(1), fovStats.Centroid(2)];   % centroid coordinates
+        fovStats     = stats(fovIndex);
+        fovCentroid  = [fovStats.Centroid(1), fovStats.Centroid(2)];   % centroid coordinates
         % Compute median (background) pixel intensity, excluding zero pixels and pixels
         % corresponding to the disc, vessels and fovea
         rgbImg       = imread(fullfile("images", "UKB", "fundus", mask_name));                                                     % read original (RGB) fundus image
@@ -85,8 +85,8 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         % a radius of approximately 680 pixels, yielding a total of 1452700 (pi*680^2) pixels making up 
         % the entire retinal region. The foveal region therefore contains around 14527 pixels (1% of 1452700)
         % A circle with a radius of 70 pixels from the foveal centroid would capture this amount of pixels.
-        maculaPI       = median(grayImg(createCirclesMask(grayImg, fovCentroid, 70)));                          % compute median macular pixel intensity
-        scaledMaculaPI = double(maculaPI) - double(backgroundPI);                                               % scale macular pixel intensity by background intensity
+        maculaPI         = median(grayImg(createCirclesMask(grayImg, fovCentroid, 70)));                          % compute median macular pixel intensity
+        scaledMaculaPI   = double(maculaPI) - double(backgroundPI);                                               % scale macular pixel intensity by background intensity
         
         % Extract OD results
         ODstats          = stats(ODindex);
@@ -97,15 +97,15 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         ODarea           = ODminorLength * ODmajorLength * pi/4;       % OD area based on the standard formula for ellipse, not adjusted for magnification
 
         % Save parameters to their respective columns in the result cell array.
-        result{i+1, 2}  = fovCentroid(1);               
-        result{i+1, 3}  = fovCentroid(2);               
-        result{i+1, 4}  = scaledMaculaPI;               
-        result{i+1, 5}  = ODcentroid(1);               
-        result{i+1, 6}  = ODcentroid(2);               
-        result{i+1, 7}  = ODmajorLength;
-        result{i+1, 8} = ODminorLength;
-        result{i+1, 9} = ODarea;
-        result{i+1, 10} = ODorientation;
+        result{i+1, 2}   = fovCentroid(1);               
+        result{i+1, 3}   = fovCentroid(2);               
+        result{i+1, 4}   = scaledMaculaPI;               
+        result{i+1, 5}   = ODcentroid(1);               
+        result{i+1, 6}   = ODcentroid(2);               
+        result{i+1, 7}   = ODmajorLength;
+        result{i+1, 8}   = ODminorLength;
+        result{i+1, 9}   = ODarea;
+        result{i+1, 10}  = ODorientation;
     end
 
     % Only compute OD-foveal distance and angle if OD and fovea masks are not empty
