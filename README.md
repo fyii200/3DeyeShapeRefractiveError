@@ -17,7 +17,11 @@
   <img src="https://github.com/user-attachments/assets/011ea01d-e96a-4313-bba2-099cf4bd0a19" width="500" /> 
 </p>
 
-## 3. Derivation of fundus features
+## 3. Imaging features derived from fundus photographs
+<p align="left">
+  <img src="https://github.com/user-attachments/assets/e098026d-c5ec-478c-9295-08275ad5412b" width="700" /> 
+</p>
+
 
 
 
