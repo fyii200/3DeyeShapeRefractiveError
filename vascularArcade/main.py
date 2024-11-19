@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+"""
+This is the main executable script for deriving temporal arterial/venous concavity.
+
+Author : Fabian Yii
+Email  : fabian.yii@ed.ac.uk
+"""
+
 import os
 import argparse
 from tqdm import tqdm
