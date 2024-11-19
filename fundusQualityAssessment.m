@@ -1,8 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Author: Fabian SL Yii                  %
+%               Email: fabian.yii@ed.ac.uk                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 clear; clc;
-homeDir  = "/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape";
-imageDir = "/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/images/UKB/fundus";
-d        = readtable(fullfile(homeDir, "data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
-addpath(fullfile(homeDir, "code", "matlabHelperFunctions", "getkey"));
+imageDir = "";
+d        = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
+addpath(fullfile("matlabHelperFunctions", "getkey"));
 
 % Fundus names 
 fundusNames = d.fundus_V1;
@@ -38,7 +42,7 @@ for i = 1:length(fundusNames)
         % Save input
         results{i,1} = fundusName
         results{i,2} = input
-        writetable(cell2table(results, "VariableNames",["fundus" "quality"]), fullfile(homeDir, "data", "PREVENT", "eyeData.csv"))
+        writetable(cell2table(results, "VariableNames",["fundus" "quality"]), "fundusQuality.csv")
         
         % Update waitbar
         waitbar(i/sum(fundusNames~="NA"));
