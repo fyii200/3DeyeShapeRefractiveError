@@ -1,8 +1,10 @@
 ## Step 1. Participant selection and image quality control
 <pre>
-1.1 clean_raw_data.R          : R script for processing the raw UK Biobank dataframe into a format compatible with 'cohort_builder.R'.
-1.2 cohort_builder.R          : R script for selecting eligible participants for the study.
-1.3 fundusQualityAssessment.m : MATLAB script for manual quality assessment of fundus photographs.
+clean_raw_data.R          : R script for processing the raw UK Biobank dataframe into a format compatible with 'cohort_builder.R'.
+
+cohort_builder.R          : R script for selecting eligible participants for the study.
+
+fundusQualityAssessment.m : MATLAB script for manual quality assessment of fundus photographs.
 </pre>
 
 ## Step 2. Manual segmentation of posterior eye volume
@@ -18,7 +20,9 @@
 
 ## Step 3. Ellipsoid fitted to each segmented posterior eye volume
 <pre>
-3.1 MRIeyeShape.m : MATLAB script for fitting ellipsoid and deriving eye shape parameters, using helper functions in 'matlabHelperFunctions'.
+MRIeyeShape.m         : MATLAB script for fitting ellipsoid and deriving eye shape parameters.
+
+matlabHelperFunctions : Folder containing helper functions for 'MRIeyeShape.m' 
 </pre>
 
 &nbsp;&nbsp;&nbsp; *PS: ellipsoids in green; segmentation overlays in pink/red*
@@ -29,9 +33,14 @@
 
 ## Step 4. Imaging features derived from fundus photographs
 <pre>
-4.1 ODfovea_analysis.m : MATLAB script for deriving optic disc and foveal parameters from the segmented optic disc and fovea.
-</pre>
+ODfovea_segment.m  : MATLAB script facilitating manual optic disc and foveal segmentation using the Image Segmenter App.
+  
+ODfovea_analysis.m : MATLAB script for deriving optic disc and foveal parameters from the segmented optic disc and fovea.
 
+vascularArcade     : Folder containing python scripts for deriving temporal arterial/venous concavity from the segmented retinal vasculature.  
+</pre>
+*Retinal vasculature was segmented automatically using [AutoMorph](https://github.com/rmaphoh/AutoMorph/tree/main), which also 
+derived central retinal arteriolar/venular equivalent, vessel tortuosity and vessel fractal dimension*
 <p align="left">
   <img src="https://github.com/user-attachments/assets/e098026d-c5ec-478c-9295-08275ad5412b" width="700" /> 
 </p>
@@ -39,7 +48,7 @@
 
 ## Step 5. Statistical analysis
 <pre>
-5.1 statisticalAnalysis.R : R script for the regression analysis described in the manuscript.
+5.1 statisticalAnalysis.R : R script for performing the regression analysis described in the manuscript.
 </pre>
 
 
