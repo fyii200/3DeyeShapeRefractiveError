@@ -1,36 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                                                         %
 %                  Author: Fabian SL Yii                  %
 %               Email: fabian.yii@ed.ac.uk                %
-%                                                         %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clc, clear all, close all;
-root  = "/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape";
-addpath(fullfile(root, "code", "matlabHelperFunctions", "createCirclesMask"));
 
-
-% %% Get names of all masked images
-% filenames = dir(fullfile(root, "images", "UKB", "fundus"));
-% i = 3;
-% filename = filenames(i).name;
-% img = imread(fullfile(root, "images", "UKB", "fundus", filename));
-% % img = img(:,:,2);
-% imageSegmenter(img);
-% 
-% %% Save mask
-% imwrite(BW, fullfile(root, "imageOutputs", "UKB", "ODfoveaMasks", filename));
-% clear BW; clear maskedImage;
-% display("done");
-
-
-%% Main analysis starts here
-% path to segmentation masks
-masks_path = fullfile(root, "imageOutputs", "UKB", "ODfoveaMasks");   
-% specify directory where the tabular data (OD/foveal parameters) will be saved
-save_csv_path = fullfile(root, "CSVoutputs", "UKB");
+% Path to segmentation masks
+masks_path    = fullfile("imageOutputs", "UKB", "ODfoveaMasks");   
+% Specify directory in which the tabular data (OD/foveal parameters) should be saved
+save_csv_path = fullfile("CSVoutputs", "UKB");
 
 % Get mask names
 mask_names = dir(masks_path);
@@ -41,7 +19,7 @@ if mask_names(1).name == ".DS_Store"
 end
 
 % Read dataset
-data = readtable(fullfile(root, "data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
+data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
 
 % Cell array to store derived OD/foveal parameters of interest 
  result = {"fundus", "foveaX", "foveaY", "FPI", "ODx", "ODy", "ODmajorLength" ..., 
@@ -89,9 +67,9 @@ data = readtable(fullfile(root, "data", "UKB", "cleaned_data_long_MRI_cohort.csv
         fovCentroid = [fovStats.Centroid(1), fovStats.Centroid(2)];   % centroid coordinates
         % Compute median (background) pixel intensity, excluding zero pixels and pixels
         % corresponding to the disc, vessels and fovea
-        rgbImg       = imread(fullfile(root, "images", "UKB", "fundus", mask_name));                                               % read original (RGB) fundus image
+        rgbImg       = imread(fullfile("images", "UKB", "fundus", mask_name));                                                     % read original (RGB) fundus image
         grayImg      = rgb2gray(rgbImg);                                                                                           % convert RGB image to grayscale
-        vesselMask   = imread(fullfile(root, "imageOutputs", "UKB", "vesselMasks", "binary_vessel", "binary_process", mask_name)); % vessel mask
+        vesselMask   = imread(fullfile("imageOutputs", "UKB", "vesselMasks", "binary_vessel", "binary_process", mask_name));       % vessel mask
         vesselMask   = imresize(vesselMask, size(ODfoveaMask));                                                                    % make sure vessel mask has the same image dim as the original fundus image
         vesselMask   = vesselMask==255;                                                                                            % make sure vessel mask is binary (0 or 1)
         combinedMask = ODfoveaMask+vesselMask >= 1;                                                                                % combine vessel mask with OD-fovea masks
