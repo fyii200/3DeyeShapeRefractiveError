@@ -1,9 +1,7 @@
 ## Step 1. Participant selection and image quality control
 <pre>
 clean_raw_data.R          : R script for processing the raw UK Biobank dataframe into a format compatible with 'cohort_builder.R'.
-
 cohort_builder.R          : R script for selecting eligible participants for the study.
-
 fundusQualityAssessment.m : MATLAB script for manual quality assessment of fundus photographs.
 </pre>
 
@@ -21,7 +19,6 @@ fundusQualityAssessment.m : MATLAB script for manual quality assessment of fundu
 ## Step 3. Ellipsoid fitted to each segmented posterior eye volume
 <pre>
 MRIeyeShape.m         : MATLAB script for fitting ellipsoid and deriving eye shape parameters.
-
 matlabHelperFunctions : Folder containing helper functions for 'MRIeyeShape.m' 
 </pre>
 
@@ -34,9 +31,7 @@ matlabHelperFunctions : Folder containing helper functions for 'MRIeyeShape.m'
 ## Step 4. Imaging features derived from fundus photographs
 <pre>
 ODfovea_segment.m  : MATLAB script facilitating manual optic disc and foveal segmentation using the Image Segmenter App.
-  
 ODfovea_analysis.m : MATLAB script for deriving optic disc and foveal parameters from the segmented optic disc and fovea.
-
 vascularArcade     : Folder containing python scripts for deriving temporal arterial/venous concavity from the segmented retinal vasculature.  
 </pre>
 *Retinal vasculature was segmented automatically using [AutoMorph](https://github.com/rmaphoh/AutoMorph/tree/main), which also 
@@ -48,7 +43,7 @@ derived central retinal arteriolar/venular equivalent, vessel tortuosity and ves
 
 ## Step 5. Statistical analysis
 <pre>
-5.1 statisticalAnalysis.R : R script for performing the regression analysis described in the manuscript.
+statisticalAnalysis.R : R script for performing the regression analysis described in the manuscript.
 </pre>
 
 
