@@ -1,3 +1,12 @@
+"""
+Script defining the "arcade_detector" class, which applies various 
+image processing techniques to detect and isolate the major temporal 
+artery and vein from the segmented retinal vasculature.
+
+Author : Fabian Yii
+Email  : fabian.yii@ed.ac.uk
+"""
+
 import os
 import cv2 as cv
 import matplotlib.pyplot as plt
