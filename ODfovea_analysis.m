@@ -108,7 +108,7 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         result{i+1, 10}  = ODorientation;
     end
 
-    % Only compute OD-foveal distance and angle if OD and fovea masks are not empty
+    % Only compute OD-fovea distance and angle if OD and fovea masks are not empty
     if cc.NumObjects ~= 0 
         % Compute EUCLIDIAN DISTANCE b/w OD centroid & fovea centroid
         ODfovDist      = sqrt(sum((ODcentroid - fovCentroid) .^2)); 
