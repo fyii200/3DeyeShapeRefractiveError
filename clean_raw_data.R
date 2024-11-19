@@ -1,8 +1,8 @@
+# Author : Fabian Yii                          
+# Email  : fabian.yii@ed.ac.uk
+
 ## Clear workspace
 rm(list=ls())
-
-## Set working directory to parent directory
-setwd("/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/")
 
 ## Read raw tabular data
 d  <- read.csv('data/UKB/FU_withFundus_brainMRI.csv')
