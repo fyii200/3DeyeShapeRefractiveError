@@ -4,8 +4,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 clear all; clc; close all;
-homeDir = "/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/";
-addpath '/Users/fabianyii/Library/CloudStorage/OneDrive-UniversityofEdinburgh/Projects/eyeShape/code/matlabHelperFunctions/imEllipsoid';
+homeDir = "";
+addpath(fullfile("matlabHelperFunctions", "imEllipsoid"));
 
 %%%%%%% Read segmentation info
 segInfo  = load(fullfile(homeDir, "imageOutputs", "UKB", "MRIsegmentation", "groundTruthMed.mat"));
@@ -15,7 +15,7 @@ segPaths = segPaths(segPaths ~= "");
 labelIDs   = segInfo.gTruthMed.LabelDefinitions.PixelLabelID;
 labelNames = segInfo.gTruthMed.LabelDefinitions.Name;
 
-%%%%%%% Read excel file where results are to be saved
+%%%%%%% Read dummy output excel file
 df = readtable(fullfile(homeDir, "CSVoutputs", "UKB", "MRIresults.xlsx"));
 
 
@@ -50,6 +50,8 @@ for i=1:length(segPaths)
        %%% [PHI THETA PSI] are euler angles [z, y, x axis rotation sequence]
        [elliRE, rotationMatrixRE] = imEquivalentEllipsoid(RE); % RE data
        REparamAxes = findAxes(rotationMatrixRE, 1);
+       
+       %%% Visualise fitted ellipsoid
        % figure; hold on; 
        % drawEllipsoid(elliRE);
        % drawEllipsoid(elliRE, 'drawEllipses', true, 'EllipseWidth', 0.2); 
@@ -109,6 +111,8 @@ for i=1:length(segPaths)
        volumeLE = nnz(LE)*mask.VoxelSpacing(1)*mask.VoxelSpacing(2)*mask.VoxelSpacing(3);
        [elliLE, rotationMatrixLE] = imEquivalentEllipsoid(LE); % LE data
        LEparamAxes = findAxes(rotationMatrixLE, 1);
+       
+       %%% Visualise fitted ellipsoid
        % figure; hold on; 
        % drawEllipsoid(elliLE);
        % drawEllipsoid(elliLE, 'drawEllipses', true, 'EllipseWidth', 0.2, 'FaceColor', 'green'); 
@@ -121,6 +125,7 @@ for i=1:length(segPaths)
        % camlight, lighting phong, alpha(0.25)     
        % axis equal;
        % axis off;
+       
        [LEcX, LEcY, LEcZ, A, B, C, LEphi, LEtheta, LEpsi] = struct('x', num2cell(elliLE)).x;
        params  = [A B C];
        LEsemiAL = params(find(strcmp(LEparamAxes,"AL")));
@@ -153,7 +158,6 @@ end
 
 
 writetable(df, fullfile(homeDir, "CSVoutputs", "MRIresults.xlsx"));
-writetable(df, fullfile(homeDir, "CSVoutputs", "MRIresults.csv"));
 display("Done!");
 
 
