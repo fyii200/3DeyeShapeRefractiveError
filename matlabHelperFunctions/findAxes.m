@@ -1,3 +1,8 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Author: Fabian SL Yii                  %
+%               Email: fabian.yii@ed.ac.uk                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 function paramAxes = findAxes(rotationMatrix, interpret)
 %findAxes  Find which axes (x, y, z) parameters A, B and C correspond to
 
