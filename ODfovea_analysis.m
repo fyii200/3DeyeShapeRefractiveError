@@ -26,10 +26,10 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
            "ODminorLength", "ODarea", "ODorientation", "ODfovDist", "ODfovAngle", "segmentation"; 
            [], [], [], [], [], [], [], [], [], [], [], [], []};
 
- f = waitbar(0, 'Starting');
+ f = waitbar(0, "Starting");
  for i=1:length(mask_names)
 
-    waitbar(i/length(mask_names), f, sprintf('Progress: %d %%', floor(i/length(mask_names)*100)));
+    waitbar(i/length(mask_names), f, sprintf("Progress: %d %%", floor(i/length(mask_names)*100)));
 
     % name of the current mask
     mask_name = mask_names(i).name;
@@ -50,7 +50,7 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
     % Only compute OD parameters if OD mask is not empty
     if cc.NumObjects ~= 0
         % Compute centroid coordinates, area, major and minor axis length and orientation for each connected component
-        stats = regionprops(cc, 'Centroid', 'MajorAxisLength', 'MinorAxisLength', 'Orientation');
+        stats = regionprops(cc, "Centroid", "MajorAxisLength", "MinorAxisLength", "Orientation");
         % "stats" should have two connected components: if RE, the first
         % and second components correspond to the fovea and OD, and vice
         % versa if LE
@@ -133,7 +133,7 @@ end
 
 %% Save result (cell array) as csv
 % write cell array to csv
-path = fullfile(save_csv_path, 'ODfoveaResults.csv');
+path = fullfile(save_csv_path, "ODfoveaResults.csv");
 writecell(result, path);
 
 
