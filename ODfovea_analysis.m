@@ -137,21 +137,20 @@ path = fullfile(save_csv_path, "ODfoveaResults.csv");
 writecell(result, path);
 
 
-%% Internal functions %%
-% Function: takes centroid1 (optic disc) coordinate and centroid2 (macula) 
-% coordinate, and returns disc-fovea angle which describes the vertical
-% separation between the disc and fovea. Note that we compute the absolute
-% difference between disc x and macula x coordinates to disregard the
-% influence of right or left eye on the sign of the vertical angle. We want
-% the sign of the computed vertical angle to reflect only the spatial
-% relationship between the disc and macula in the Y plane.
-% NEGATIVE vertical angle means disc is HIGHER than macula (rmb origin
-% [0,0] starts in the top left corner!
+%% Internal Function 1 %%
+% This function takes the coordinates of centroid1 (optic disc) 
+% and centroid2 (fovea) as inputs and returns the optic disc-fovea angle, 
+% which describes the vertical angular separation between the disc and
+% the fovea. By taking the absolute difference between the x-coordinates 
+% of the disc and fovea, the influence of the right or left eye on the sign 
+% of the angle is eliminated. As a result, the sign of the computed vertical 
+% angle solely reflects the spatial relationship between the disc and fovea 
+% in the Y-plane. A NEGATIVE vertical angle indicates that the optic disc 
+% is HIGHER than the fovea (as the origin [0, 0] starts in the top-left corner).
 function vert_angle = vert_angle(centroid1, centroid2)
 x_distance = abs(centroid1(1) - centroid2(1)); 
 y_distance = centroid1(2) - centroid2(2);
 vert_angle = atand(y_distance / x_distance);
-
 end
 
 
