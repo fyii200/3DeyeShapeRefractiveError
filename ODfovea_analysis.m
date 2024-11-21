@@ -85,16 +85,16 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         % a radius of approximately 680 pixels, yielding a total of 1452700 (pi*680^2) pixels making up 
         % the entire retinal region. The foveal region therefore contains around 14527 pixels (1% of 1452700)
         % A circle with a radius of 70 pixels from the foveal centroid would capture this amount of pixels.
-        maculaPI         = median(grayImg(createCirclesMask(grayImg, fovCentroid, 70)));                          % compute median macular pixel intensity
-        scaledMaculaPI   = double(maculaPI) - double(backgroundPI);                                               % scale macular pixel intensity by background intensity
+        maculaPI         = median(grayImg(createCirclesMask(grayImg, fovCentroid, 70)));                                           % compute median macular pixel intensity
+        scaledMaculaPI   = double(maculaPI) - double(backgroundPI);                                                                % scale macular pixel intensity by background intensity
         
         % Extract OD results
         ODstats          = stats(ODindex);
-        ODcentroid       = [ODstats.Centroid(1), ODstats.Centroid(2)]; % centroid coordinates
-        ODmajorLength    = ODstats.MajorAxisLength;                    % major Axis Length, not adjusted for magnification
-        ODminorLength    = ODstats.MinorAxisLength;                    % minor Axis Length, not adjusted for magnification
-        ODorientation    = abs(ODstats.Orientation);                   % orientation (absolute angle b/w x axis and OD major axis) 
-        ODarea           = ODminorLength * ODmajorLength * pi/4;       % OD area based on the standard formula for ellipse, not adjusted for magnification
+        ODcentroid       = [ODstats.Centroid(1), ODstats.Centroid(2)];                                                             % centroid coordinates
+        ODmajorLength    = ODstats.MajorAxisLength;                                                                                % major OD axis length, not corrected for magnification
+        ODminorLength    = ODstats.MinorAxisLength;                                                                                % minor OD axis length, not corrected for magnification
+        ODorientation    = abs(ODstats.Orientation);                                                                               % orientation (absolute angle between x axis and OD major axis) 
+        ODarea           = ODminorLength * ODmajorLength * pi/4;                                                                   % OD area based on the standard formula for ellipse, not adjusted for magnification
 
         % Save parameters to their respective columns in the result cell array.
         result{i+1, 2}   = fovCentroid(1);               
@@ -135,6 +135,7 @@ end
 % write cell array to csv
 path = fullfile(save_csv_path, "ODfoveaResults.csv");
 writecell(result, path);
+
 
 
 %% Internal Function 1 %%
