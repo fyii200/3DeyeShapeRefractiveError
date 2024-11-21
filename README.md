@@ -1,7 +1,7 @@
 ## This repository contains the source code for the following work:
 <pre>
 Can fundus features tell us something about 3D eye shape? [under review]
-  <pre>
+<pre>
 
 An overview of the workflow is provided below.
 
