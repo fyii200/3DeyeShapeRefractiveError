@@ -1,4 +1,4 @@
-## This repository contains code used for the following work:
+## This repository contains the code used for the following work:
 *Can fundus features tell us something about 3D eye shape?* [under review]
 
 An overview of the workflow is provided below.
