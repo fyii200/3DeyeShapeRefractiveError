@@ -94,7 +94,7 @@ data = readtable(fullfile("data", "UKB", "cleaned_data_long_MRI_cohort.csv"));
         ODmajorLength    = ODstats.MajorAxisLength;                                                                                % major OD axis length, not corrected for magnification
         ODminorLength    = ODstats.MinorAxisLength;                                                                                % minor OD axis length, not corrected for magnification
         ODorientation    = abs(ODstats.Orientation);                                                                               % orientation (absolute angle between x axis and OD major axis) 
-        ODarea           = ODminorLength * ODmajorLength * pi/4;                                                                   % OD area based on the standard formula for ellipse, not adjusted for magnification
+        ODarea           = ODminorLength * ODmajorLength * pi/4;                                                                   % OD area based on the standard formula for the area of an ellipse, not corrected for magnification
 
         % Save parameters to their respective columns in the result cell array.
         result{i+1, 2}   = fovCentroid(1);               
