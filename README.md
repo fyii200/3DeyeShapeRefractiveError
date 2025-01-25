@@ -1,6 +1,6 @@
 ## This repository contains the source code for the following work:
 <pre>
-Can fundus features tell us something about 3D eye shape? [under review]
+Yii F, Strang N, Gibbon S, MacGillivray T. Can fundus features tell us something about 3D eye shape? Ophthalmic Physiol Opt. Epub 2025 Jan. Available from: https://doi.org/10.1111/opo.13454
 </pre>
 
 An overview of the workflow is provided below.
